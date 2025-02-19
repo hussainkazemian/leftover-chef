@@ -1,12 +1,16 @@
-import IngredientSelection from "./components/IngredientSelection";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router';
+import RecipeForm from './components/RecipeForm';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div>
-      <h1>Leftover Chef</h1>
-      <IngredientSelection />
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/add-recipe" component={RecipeForm} />
+        {/* Add other routes as needed */}
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;

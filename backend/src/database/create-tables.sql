@@ -19,12 +19,17 @@ CREATE TABLE profiles (
 );
 
 -- Create Recipes Table
-CREATE TABLE recipes (
+CREATE TABLE IF NOT EXISTS recipes (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT NOT NULL,
   description TEXT NOT NULL,
-  user_id INTEGER,
-  FOREIGN KEY(user_id) REFERENCES users(id)
+  ingredients TEXT NOT NULL,
+  steps TEXT NOT NULL,
+  category TEXT NOT NULL,
+  allergies TEXT,
+  images TEXT,
+  created_by TEXT NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Create Comments Table

@@ -1,14 +1,25 @@
-import { Request, Response } from 'express';
-import recipeService from '../services/recipeServie';
+import { Request, Response, NextFunction } from 'express';
+import { RecipeModel, Recipe } from '../models/recipe-model';
 
-export const createRecipe = async (req: Request, res: Response) => {
-  try {
-    const recipe = await recipeService.create(req.user.id, req.body);
-    res.status(201).json(recipe);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
+export class RecipeController {
+  private recipeModel: RecipeModel;
+
+  constructor(recipeModel: RecipeModel) {
+    this.recipeModel = recipeModel;
   }
-};
+
+  public createRecipe = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const recipe: Recipe = req.body;
+      const newRecipe = await this.recipeModel.create(recipe);
+      res.status(201).json(newRecipe);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  // Add other methods like get, update, delete as needed
+}
 
 export const updateRecipe = async (req: Request, res: Response) => {
   try {
