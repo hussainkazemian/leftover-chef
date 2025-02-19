@@ -84,3 +84,9 @@ npm start
 
 Let’s cook smarter and reduce food waste together with Leftover Chef! 🍽️
 
+
+ENDPOINTS :
+GET /api/ingredients
+POST /api/ingredients
+
+POST /api/user-inventory
