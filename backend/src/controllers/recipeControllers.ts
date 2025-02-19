@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import recipeService from '../services/recipeService';
+import recipeService from '../services/recipeServie';
 
 export const createRecipe = async (req: Request, res: Response) => {
   try {
